@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 
 export default function App() {
-    // Target launch date (set your launch date here)
+    // Target launch date
     const launchDate = new Date("2025-12-31T00:00:00").getTime();
 
-    const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+    const [timeLeft, setTimeLeft] = useState({
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+    });
     const [email, setEmail] = useState("");
     const [submitted, setSubmitted] = useState(false);
 
@@ -36,137 +41,84 @@ export default function App() {
     };
 
     return (
-        <div style={styles.container}>
+        <div className="text-center px-5 py-12 font-sans bg-gray-100 min-h-screen flex flex-col items-center justify-center">
             {/* Hero Section */}
-            <h1 style={styles.headline}>🚀 Something Exciting is Coming Soon!</h1>
-            <p style={styles.subheadline}>
+            <h1 className="text-4xl md:text-5xl mb-3 font-bold text-[#222]">
+                🚀 Something Exciting is Coming Soon!
+            </h1>
+            <p className="text-lg text-gray-600 mb-10">
                 We’re working hard to launch our new website. Stay tuned!
             </p>
 
             {/* Countdown Timer */}
-            <div style={styles.countdown}>
-                <div style={styles.timerBox}>
-                    <span style={styles.timerValue}>{timeLeft.days}</span>
-                    <span style={styles.timerLabel}>Days</span>
+            <div className="flex justify-center gap-5 mb-8 flex-wrap">
+                <div className="bg-white px-6 py-4 rounded-lg shadow-md min-w-[80px]">
+          <span className="block text-3xl font-bold text-gray-800">
+            {timeLeft.days}
+          </span>
+                    <span className="text-sm text-gray-500">Days</span>
                 </div>
-                <div style={styles.timerBox}>
-                    <span style={styles.timerValue}>{timeLeft.hours}</span>
-                    <span style={styles.timerLabel}>Hours</span>
+                <div className="bg-white px-6 py-4 rounded-lg shadow-md min-w-[80px]">
+          <span className="block text-3xl font-bold text-gray-800">
+            {timeLeft.hours}
+          </span>
+                    <span className="text-sm text-gray-500">Hours</span>
                 </div>
-                <div style={styles.timerBox}>
-                    <span style={styles.timerValue}>{timeLeft.minutes}</span>
-                    <span style={styles.timerLabel}>Minutes</span>
+                <div className="bg-white px-6 py-4 rounded-lg shadow-md min-w-[80px]">
+          <span className="block text-3xl font-bold text-gray-800">
+            {timeLeft.minutes}
+          </span>
+                    <span className="text-sm text-gray-500">Minutes</span>
                 </div>
-                <div style={styles.timerBox}>
-                    <span style={styles.timerValue}>{timeLeft.seconds}</span>
-                    <span style={styles.timerLabel}>Seconds</span>
+                <div className="bg-white px-6 py-4 rounded-lg shadow-md min-w-[80px]">
+          <span className="block text-3xl font-bold text-gray-800">
+            {timeLeft.seconds}
+          </span>
+                    <span className="text-sm text-gray-500">Seconds</span>
                 </div>
             </div>
 
             {/* Signup Form */}
             {!submitted ? (
-                <form style={styles.form} onSubmit={handleSubmit}>
+                <form
+                    onSubmit={handleSubmit}
+                    className="flex justify-center mb-8 w-full max-w-md"
+                >
                     <input
                         type="email"
                         placeholder="Enter your email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
-                        style={styles.input}
+                        className="px-3 py-2 w-64 border border-gray-300 rounded-l-md focus:outline-none"
                     />
-                    <button type="submit" style={styles.button}>
+                    <button
+                        type="submit"
+                        className="px-5 py-2 bg-blue-600 text-white font-bold rounded-r-md hover:bg-blue-700"
+                    >
                         Notify Me
                     </button>
                 </form>
             ) : (
-                <p style={styles.thankyou}>✅ Thanks! We’ll notify you at launch.</p>
+                <p className="text-green-600 text-lg mb-8">
+                    ✅ Thanks! We’ll notify you at launch.
+                </p>
             )}
 
             {/* Footer */}
-            <footer style={styles.footer}>
-                <a href="#contact" style={styles.footerLink}>Contact</a> |{" "}
-                <a href="#privacy" style={styles.footerLink}>Privacy Policy</a> |{" "}
-                <a href="#terms" style={styles.footerLink}>Terms</a>
+            <footer className="mt-10 text-sm text-gray-600">
+                <a href="#contact" className="text-blue-600 no-underline mx-1 hover:underline">
+                    Contact
+                </a>
+                |{" "}
+                <a href="#privacy" className="text-blue-600 no-underline mx-1 hover:underline">
+                    Privacy Policy
+                </a>
+                |{" "}
+                <a href="#terms" className="text-blue-600 no-underline mx-1 hover:underline">
+                    Terms
+                </a>
             </footer>
         </div>
     );
 }
-
-const styles = {
-    container: {
-        textAlign: "center",
-        padding: "50px 20px",
-        fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-        background: "#f5f5f5",
-        minHeight: "100vh",
-    },
-    headline: {
-        fontSize: "2.5rem",
-        marginBottom: "10px",
-        color: "#222",
-    },
-    subheadline: {
-        fontSize: "1.2rem",
-        marginBottom: "40px",
-        color: "#555",
-    },
-    countdown: {
-        display: "flex",
-        justifyContent: "center",
-        gap: "20px",
-        marginBottom: "30px",
-    },
-    timerBox: {
-        background: "#fff",
-        padding: "15px 25px",
-        borderRadius: "10px",
-        boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-        minWidth: "80px",
-    },
-    timerValue: {
-        display: "block",
-        fontSize: "2rem",
-        fontWeight: "bold",
-        color: "#333",
-    },
-    timerLabel: {
-        fontSize: "0.9rem",
-        color: "#777",
-    },
-    form: {
-        display: "flex",
-        justifyContent: "center",
-        marginBottom: "30px",
-    },
-    input: {
-        padding: "10px",
-        width: "250px",
-        border: "1px solid #ccc",
-        borderRadius: "5px 0 0 5px",
-        outline: "none",
-    },
-    button: {
-        padding: "10px 20px",
-        border: "none",
-        background: "#007bff",
-        color: "#fff",
-        cursor: "pointer",
-        borderRadius: "0 5px 5px 0",
-        fontWeight: "bold",
-    },
-    thankyou: {
-        fontSize: "1.1rem",
-        color: "green",
-        marginBottom: "30px",
-    },
-    footer: {
-        marginTop: "40px",
-        fontSize: "0.9rem",
-        color: "#555",
-    },
-    footerLink: {
-        color: "#007bff",
-        textDecoration: "none",
-        margin: "0 5px",
-    },
-};
