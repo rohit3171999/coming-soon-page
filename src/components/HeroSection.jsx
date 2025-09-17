@@ -1,3 +1,5 @@
+import CountdownWriter from "./CountdownWriter.jsx";
+
 /*
 * Description: The top section of the page that captures attention and communicates the key message.
 Purpose: Immediately tell visitors something exciting is coming, and show the countdown prominently.
@@ -10,9 +12,9 @@ export default function HeroSection(){
         <section className="relative flex flex-col items-center justify-center min-h-screen bg-gray-800 text-white text-center p-4 sm:p-6 md:p-8">
             {/* You can add a background image here for more visual appeal */}
             {/* e.g., style={{ backgroundImage: 'url(/path/to/your/image.jpg)' }} className="bg-cover bg-center" */}
-            <div className="z-">
+            <div className="z-10">
                 {/* Logo placeholder - Replace with your actual logo */}
-                <img src="https://www.wpelemento.com/cdn/shop/files/free-coming-soon-wordpress-theme.png?v=1717758512" alt="Company Logo" className="h-12 sm:h-100 md:h-150 mx-auto mb-8"/>
+                <img src="https://www.wpelemento.com/cdn/shop/files/free-coming-soon-wordpress-theme.png?v=1717758512" alt="Company Logo" className="h-24 sm:h-32 mx-auto mb-8"/>
 
                 {/* Headline */}
                 <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
@@ -26,8 +28,7 @@ export default function HeroSection(){
 
                 {/* Wrapper for CountdownTimer component */}
                 <div>
-                    {/* <CountdownTimer targetDate={launchDate} /> */}
-                    <p className="italic text-gray-400">(Countdown Timer component will go here)</p>
+                    <CountdownWriter targetDate={launchDate} />
                 </div>
             </div>
         </section>
